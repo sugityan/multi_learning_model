@@ -20,26 +20,29 @@ class DNN(nn.Module):
         self.l1 = nn.Linear(input_dim, hidden_dim)
         # self.a1 = activate_func[0]
         # self.a1 = activate_func[1]
-        # self.a1 = activate_func[2]
+        self.a1 = activate_func[2]
         # self.a1 = activate_func[3]
-        self.a1 = activate_func[4]
+        # self.a1 = activate_func[4]
+        self.d1 = nn.Dropout(0.5)
         self.l2 = nn.Linear(hidden_dim, hidden_dim)
         # self.a2 = activate_func[0]
         # self.a2 = activate_func[1]
-        # self.a2 = activate_func[2]
+        self.a2 = activate_func[2]
         # self.a2 = activate_func[3]
-        self.a2 = activate_func[4]
+        # self.a2 = activate_func[4]
+        self.d2 = nn.Dropout(0.5)
         self.l3 = nn.Linear(hidden_dim, hidden_dim)
         # self.a3 = activate_func[0]
         # self.a3 = activate_func[1]
-        # self.a3 = activate_func[2]
+        self.a3 = activate_func[2]
         # self.a3 = activate_func[3]
-        self.a3 = activate_func[4]
+        # self.a3 = activate_func[4]
+        self.d3 = nn.Dropout(0.5)
         self.l4 = nn.Linear(hidden_dim, output_dim)
 
-        self.layers = [self.l1, self.a1,
-                       self.l2, self.a2,
-                       self.l3, self.a3,
+        self.layers = [self.l1, self.a1, self.d1,
+                       self.l2, self.a2, self.d2,
+                       self.l3, self.a3, self.d3,
                        self.l4]
 
     def forward(self, x):
